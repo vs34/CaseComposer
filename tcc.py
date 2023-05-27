@@ -5,6 +5,8 @@ n=0
 with open("tc1.csv", "w") as opfile:
     pass
 
+with open("tc1.csv", "w") as opfile:
+    opfile.write("test case,notworking output,working output")
 
 for a in range(100):
     # Read the multi-line input from tc.py
