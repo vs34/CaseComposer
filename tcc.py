@@ -6,10 +6,12 @@ OS = platform.system()
 with open("tc1.csv", "w") as opfile:
     pass
 
+# Create the output file with headers
 with open("tc1.csv", "w") as opfile:
-    opfile.write("test case,notworking output,working output")
-
-for a in range(100):
+    opfile.write("test case, not working output, working output")
+    
+nooftc = int(input("Number of test case to check (integer) : ")
+for a in range(nooftc):
     # Read the multi-line input from tc.py
     input_data = subprocess.run(["python3", "tc.py"], stdout=subprocess.PIPE, text=True).stdout
     print(a)
@@ -32,4 +34,5 @@ for a in range(100):
             opfile.write("++++++++++++++++++++++++++++++++++++++++++++++\n")
             n += 1
 
-print("number of failed TC = ",n)
+# Print the number of failed test cases
+print("Number of failed TC = ", n)
