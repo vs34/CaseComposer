@@ -1,7 +1,8 @@
 import os
+import platform
 import subprocess
-n=0
-
+n = 0
+OS = platform.system()
 with open("tc1.csv", "w") as opfile:
     pass
 
@@ -13,10 +14,15 @@ for a in range(100):
     input_data = subprocess.run(["python3", "tc.py"], stdout=subprocess.PIPE, text=True).stdout
     print(a)
 # Run the input data through working.out and store the output
-    working_output = subprocess.check_output(["./working.out"], input=input_data, text=True).replace("\n", " ")
+    if OS == 'Windows':
+        working_output = subprocess.check_output(["./working.exe"], input=input_data, text=True).replace("\n", " ")
+        not_working_output = subprocess.check_output(["./notworkin.exe"], input=input_data, text=True).replace("\n", " ")
+        
+    else ;
+        working_output = subprocess.check_output(["./working.out"], input=input_data, text=True).replace("\n", " ")
+        not_working_output = subprocess.check_output(["./notworkin.out"], input=input_data, text=True).replace("\n", " ")
 
 # Run the input data through notworking.out and store the output
-    not_working_output = subprocess.check_output(["./notworkin.out"], input=input_data, text=True).replace("\n", " ")
     # print(not_working_output,working_output)
     # print(not_working_output==working_output)
 # Write the output to separate files
