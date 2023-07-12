@@ -24,14 +24,21 @@ The Test Case Generator is a tool designed to automate the generation of test ca
  
  
 ## Usage
+1. you have to make a python file named tc.py which print random test cases according to the question inside Case Composer directory. you can change language of tc file change source code (tcc.py) line 13
 
 1. Open the terminal and navigate to the project directory.
 
 2. Modify file1.c and file2.c to contain the desired C code.
-    
+
+FOR UNIX AND LINUX
+
        clang file1.c -o working.out
        clang file2.c -o notworking.out
- 3. Run the following command to generate the test cases:
+FOR WINDOWS
+
+       clang file1.c -o working.exe
+       clang file2.c -o notworking.exe
+ 4. Run the following command to generate the test cases:
 
         python3 tcc.py
 
