@@ -4,7 +4,7 @@
 
 ## Description
 
-The Test Case Generator is a tool designed to automate the generation of test cases for C or C++ code. It compiles two C or C++ files, `file1.c` and `file2.c`, using `clang` to create two separate executable files, `working.out` and `notworking.out`, respectively. It then compares the output of both executable files and adds any differing outputs to `tc1.csv`. Additionally, it takes input from `tc.py` to generate the test cases.
+The Test Case Generator is a tool designed to automate the generation of test cases for C or C++ code. It compiles two C or C++ files, `file1.c` and `file2.c`, using `clang` or `file1.cpp` and `file2.cpp`, using `clang++` to create two separate executable files, `working.out` and `notworking.out`, respectively. It then compares the output of both executable files and adds any differing outputs to `tc1.csv`. Additionally, it takes input from `tc.py` to generate the test cases.
 
 ## Prerequisites
 
