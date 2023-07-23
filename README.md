@@ -4,11 +4,12 @@
 
 ## Description
 
-The Test Case Generator is a tool designed to automate the generation of test cases for C code. It compiles two C files, `file1.c` and `file2.c`, using `clang` to create two separate executable files, `working.out` and `notworking.out`, respectively. It then compares the output of both executable files and adds any differing outputs to `tc1.csv`. Additionally, it takes input from `tc.py` to generate the test cases.
+The Test Case Generator is a tool designed to automate the generation of test cases for C or C++ code. It compiles two C or C++ files, `file1.c` and `file2.c`, using `clang` to create two separate executable files, `working.out` and `notworking.out`, respectively. It then compares the output of both executable files and adds any differing outputs to `tc1.csv`. Additionally, it takes input from `tc.py` to generate the test cases.
 
 ## Prerequisites
 
-- `clang` compiler installed on the system
+- `clang++` for C++ compiler installed on the system
+- `clang` for C compiler installed on the system
 - Python 3.x
 - you have to write tc.py that print testcase 
 
@@ -27,18 +28,30 @@ The Test Case Generator is a tool designed to automate the generation of test ca
 1. you have to make a python file named tc.py which print random test cases according to the question inside Case Composer directory. you can change language of tc file change source code (tcc.py) line 13
 
 1. Open the terminal and navigate to the project directory.
+2. Modify file1.c/.cpp and file2.c/.cpp to contain the desired C/C++ code.
+### FOR C CODE
 
-2. Modify file1.c and file2.c to contain the desired C code.
-
-FOR UNIX AND LINUX
+-- FOR UNIX AND LINUX
 
        clang file1.c -o working.out
        clang file2.c -o notworking.out
-FOR WINDOWS
+-- FOR WINDOWS
 
        clang file1.c -o working.exe
        clang file2.c -o notworking.exe
- 4. Run the following command to generate the test cases:
+### FOR C++ CODE
+
+-- FOR UNIX AND LINUX
+
+       clang++ file1.cpp -o working.out
+       clang++ file2.cpp -o notworking.out
+-- FOR WINDOWS
+
+       clang++ file1.cpp -o working.exe
+       clang++ file2.cpp -o notworking.exe
+
+ 
+ 3. Run the following command to generate the test cases:
 
         python3 tcc.py
 
