@@ -8,7 +8,7 @@ with open("tc1.csv", "w") as opfile:
 
 # Create the output file with headers
 with open("tc1.csv", "w") as opfile:
-    opfile.write("test case, not working output, working output")
+    opfile.write("test case, not working output, working output"))
     
 nooftc = int(input("Number of test case to check (integer) : ")
 for a in range(nooftc):
@@ -20,7 +20,7 @@ for a in range(nooftc):
         working_output = subprocess.check_output(["./working.exe"], input=input_data, text=True).replace("\n", " ")
         not_working_output = subprocess.check_output(["./notworkin.exe"], input=input_data, text=True).replace("\n", " ")
         
-    else ;
+    else :
         working_output = subprocess.check_output(["./working.out"], input=input_data, text=True).replace("\n", " ")
         not_working_output = subprocess.check_output(["./notworkin.out"], input=input_data, text=True).replace("\n", " ")
 
