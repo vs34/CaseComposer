@@ -53,7 +53,7 @@ The Test Case Generator is a tool designed to automate the generation of test ca
  
  3. Run the following command to generate the test cases:
 
-        python3 tcc.py
+        python3 tester.py
 
 This command will compile file1.c and file2.c into working.out and notworking.out, respectively according to tc.py genrated testcase. It will then compare the outputs of both executables and add any differing outputs to tc1.csv.
 
