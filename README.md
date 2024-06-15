@@ -1,6 +1,4 @@
-# CaseComposer
-
-# Test Case Generator
+# CaseComposer / Test Case Generator
 
 ## Description
 
