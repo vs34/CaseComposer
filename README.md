@@ -51,7 +51,7 @@ python3 tester.py
 ```
 Alternatively, you can use the shell script:
 ```bash
-bash runTCGen.md
+bash runCaseComposer.md
 ```
 
 ## How It Works
