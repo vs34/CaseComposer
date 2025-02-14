@@ -53,9 +53,17 @@ bash runCaseComposer.md
 ## Output Format
 If discrepancies are found, they will be logged in `wrongCases.csv` as:
 ```
-Test Case, Not Working Output, Expected Output
-4 1\n10 2 3 3 9, Yes, No
-10 1\n4 7 4 4 2 9 2 4 8 1, No, Yes
+test case, not working output, working output
+1
+10 1
+2 8 1 8 7 9 2 2 2 3
+6 , No , Yes 
+++++++++++++++++++++++++++++++++++++++++++++++
+1
+3 1
+8 6 8
+6 , Yes , No 
+++++++++++++++++++++++++++++++++++++++++++++++
 ```
 Additionally, if the user opts to view the incorrect cases, they are displayed as:
 ```
