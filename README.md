@@ -21,34 +21,45 @@ Ensure you have the following installed:
 - Python 3+
 - GCC (g++-14 or compatible version)
 
-## Setup and Execution
+## Setup and Installation
 ### 1. Clone the repository
 ```bash
 git clone https://github.com/yourusername/CaseComposer.git
 cd CaseComposer
 ```
 
-### 2. Compile the C++ Programs
+### 2. Add Your Implementations
+- Copy and paste your **correct** code into `correct.cpp`.
+- Copy and paste your **incorrect** (to be tested) code into `wrong.cpp`.
+- Make sure both programs take input from `stdin` and output results to `stdout`.
+
+### 3. Set Up the Test Case Generator
+- The test cases are generated using `testCaseGenerator.py`.
+- If you already have a test case generator, copy your logic into this file.
+- You can generate a new one using ChatGPT, Gemini, DeepSeek, etc.
+- Ensure that the output format matches the expected input of your programs.
+
+### 4. Compile the C++ Programs
 ```bash
 g++-14 correct.cpp -o working.out
 g++-14 wrong.cpp -o notworking.out
 ```
 
-### 3. Run the Test Framework
+### 5. Run the Test Framework
 ```bash
 python3 tester.py
 ```
-
 Alternatively, you can use the shell script:
 ```bash
-bash runCaseComposer.md
+bash runTCGen.md
 ```
 
 ## How It Works
-1. Generates test cases using `testCaseGenerator.py`.
-2. Runs both `working.out` and `notworking.out` on the same test cases.
-3. Compares the outputs and logs discrepancies in `wrongCases.csv`.
-4. Displays the number of failed test cases and optionally prints them.
+1. You will be asked to enter the number of test cases to generate and evaluate.
+2. The script generates test cases using `testCaseGenerator.py`.
+3. It runs both `working.out` and `notworking.out` on the same test cases.
+4. The outputs are compared, and discrepancies are logged in `wrongCases.csv`.
+5. At the end, you will be asked if you want to see all the incorrect test cases.
 
 ## Output Format
 If discrepancies are found, they will be logged in `wrongCases.csv` as:
@@ -70,6 +81,14 @@ Additionally, if the user opts to view the incorrect cases, they are displayed a
 ------------------------------------------------------------
 | Wrong Output Number | Not Working Output | Expected Output |
 ------------------------------------------------------------
+
+Test Case 1:
+----------------
+1
+5 1
+9 8 9 6 10
+10
+----------------
 |         1          |        Yes         |       No        |
 ------------------------------------------------------------
 ```
@@ -89,6 +108,9 @@ This project is open-source under the MIT License.
 
 ## Contributions
 Feel free to submit pull requests or open issues for improvements!
+
+**💡 Original Concept & Implementation:** Developed by [vs34](https://github.com/vs34) 🎯  
+
 
 ---
 Happy Testing! 🚀
