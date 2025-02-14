@@ -61,6 +61,15 @@ bash runTCGen.md
 4. The outputs are compared, and discrepancies are logged in `wrongCases.csv`.
 5. At the end, you will be asked if you want to see all the incorrect test cases.
 
+## Progress Tracking
+
+As the test cases are being executed, you will see a progress bar indicating the completion percentage, after you enter the number of test cases you wish to test for.  
+```
+Number of test cases to check (integer): 2
+Progress: |██████████████████████████████████████████████████| 100.0% Complete
+```
+This helps you monitor the execution status in real time.  
+
 ## Output Format
 If discrepancies are found, they will be logged in `wrongCases.csv` as:
 ```
