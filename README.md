@@ -13,7 +13,7 @@ CaseComposer/
 │── wrong.cpp              # Incorrect implementation (to be tested)
 │── notworking.out         # Executable for the incorrect implementation
 │── working.out            # Executable for the correct implementation
-│── runTCGen.md            # Shell script to compile and execute the test framework
+│── runCaseComposer.md            # Shell script to compile and execute the test framework
 │── README.md              # Documentation
 ```
 
