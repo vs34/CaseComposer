@@ -1,5 +1,5 @@
 # CaseComposer : Test Case Generator
-**💡 Original Concept & Implementation:** Developed by [Vaibhav Singh (the BESTEST vaibhav around 😎)](https://github.com/vs34) 🎯  
+**💡 Original Concept & Implementation:** Developed by [Vaibhav Singh (BESTEST vaibhav)](https://github.com/vs34) 🎯  
 
 CaseComposer is a test case generation and validation framework that compares the outputs of a correct and incorrect implementation. It automatically identifies discrepancies and logs incorrect outputs.
 
