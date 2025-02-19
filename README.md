@@ -1,115 +1,123 @@
-# CaseComposer / Test Case Generator
+# CaseComposer : Test Case Generator
+**💡 Original Concept & Implementation:** Developed by [Vaibhav Singh (BESTEST vaibhav)](https://github.com/vs34) 🎯  
 
-## Description
+CaseComposer is a test case generation and validation framework that compares the outputs of a correct and incorrect implementation. It automatically identifies discrepancies and logs incorrect outputs.
 
-The Test Case Generator is a tool designed to automate the generation and testing of test cases for C or C++ code. Here's a streamlined and specific description:
-
----
-
-### Test Case Generator
-
-The Test Case Generator automates the creation and validation of test cases for C or C++ programs. It performs the following tasks:
-
-1. **Compilation**:
-   - Compiles two C files (`file1.c` and `file2.c`) using `clang`, or two C++ files (`file1.cpp` and `file2.cpp`) using `clang++`.
-   - Produces two executables: `working.out` and `notworking.out`.
-
-2. **Test Case Generation and Execution**:
-   - Runs `tc.py` to generate test cases. **You need to write tc.py to genrate testcase according to the given question**
-   - Executes the generated test cases using both `working.out` and `notworking.out`.
-
-3. **Output Comparison**:
-   - Compares the outputs of `working.out` and `notworking.out`.
-   - If the outputs differ, it prints the differing test case and logs it to `tc1.csv`.
-
-### Workflow
-
-1. **Generate Test Cases**:
-   - `tc.py` generates the input test cases.
-
-2. **Run and Compare Outputs**:
-   - `tester.py` runs the generated test cases through both executables.
-   - Compares the outputs:
-     - If different, prints the test case and appends it to `tc1.csv`.
-
-### Example Usage
-
-1. **Compilation**:
-   ```bash
-   clang file1.c -o working.out
-   clang file2.c -o notworking.out
-   ```
-
-2. **Generate Test Cases**:
-   ```bash
-   python tc.py
-   ```
-
-3. **Run and Compare**:
-   ```bash
-   python tester.py
-   ```
+## Directory Structure
+```
+CaseComposer/
+│── tester.py              # Main script to run test cases and compare outputs
+│── testCaseGenerator.py   # Script to generate test cases
+│── wrongCases.csv         # Stores test cases where the output differs
+│── correct.cpp            # Correct implementation (reference solution)
+│── wrong.cpp              # Incorrect implementation (to be tested)
+│── notworking.out         # Executable for the incorrect implementation
+│── working.out            # Executable for the correct implementation
+│── runCaseComposer.md     # Shell script to compile and execute the test framework
+│── README.md              # Documentation
+```
 
 ## Prerequisites
+Ensure you have the following installed:
+- Python 3+
+- GCC (g++-14 or compatible version)
 
-- `clang++` for C++ compiler installed on the system
-- `clang` for C compiler installed on the system
-- Python 3.x
-- you have to write tc.py that print testcase 
+## Setup and Installation
+### 1. Clone the repository
+```bash
+git clone https://github.com/yourusername/CaseComposer.git
+cd CaseComposer
+```
 
-## Installation
+### 2. Add Your Implementations
+- Copy and paste your **correct** code into `correct.cpp`.
+- Copy and paste your **incorrect** (to be tested) code into `wrong.cpp`.
+- Make sure both programs take input from `stdin` and output results to `stdout`.
 
-1. Clone the repository:
+### 3. Set Up the Test Case Generator
+- The test cases are generated using `testCaseGenerator.py`.
+- If you already have a test case generator, copy your logic into this file.
+- You can generate a new one using ChatGPT, Gemini, DeepSeek, etc.
+- Ensure that the output format matches the expected input of your programs.
 
-   ```bash
-   git clone https://github.com/username/test-case-generator.git
-2. Navigate to the project directory:
-   ```bash
-   cd CaseComposer
- 
- 
-## Usage
-1. you have to make a python file named tc.py which print random test cases according to the question inside Case Composer directory. you can change language of tc file change source code (tcc.py) line 13
+### 4. Compile the C++ Programs
+```bash
+g++-14 correct.cpp -o working.out
+g++-14 wrong.cpp -o notworking.out
+```
 
-1. Open the terminal and navigate to the project directory.
-2. Modify file1.c/.cpp and file2.c/.cpp to contain the desired C/C++ code.
-### FOR C CODE
+### 5. Run the Test Framework
+```bash
+python3 tester.py
+```
+Alternatively, you can use the shell script:
+```bash
+bash runCaseComposer.md
+```
 
--- FOR UNIX AND LINUX
+## How It Works
+1. You will be asked to enter the number of test cases to generate and evaluate.
+2. The script generates test cases using `testCaseGenerator.py`.
+3. It runs both `working.out` and `notworking.out` on the same test cases.
+4. The outputs are compared, and discrepancies are logged in `wrongCases.csv`.
+5. At the end, you will be asked if you want to see all the incorrect test cases.
 
-       clang file1.c -o working.out
-       clang file2.c -o notworking.out
--- FOR WINDOWS
+## Progress Tracking
 
-       clang file1.c -o working.exe
-       clang file2.c -o notworking.exe
-### FOR C++ CODE
+As the test cases are being executed, you will see a progress bar indicating the completion percentage, after you enter the number of test cases you wish to test for.  
+```
+Number of test cases to check (integer): 2
+Progress: |██████████████████████████████████████████████████| 100.0% Complete
+```
+This helps you monitor the execution status in real time.  
 
--- FOR UNIX AND LINUX
+## Output Format
+If discrepancies are found, they will be logged in `wrongCases.csv` as:
+```
+test case, not working output, working output
+1
+10 1
+2 8 1 8 7 9 2 2 2 3
+6 , No , Yes 
+++++++++++++++++++++++++++++++++++++++++++++++
+1
+3 1
+8 6 8
+6 , Yes , No 
+++++++++++++++++++++++++++++++++++++++++++++++
+```
+Additionally, if the user opts to view the incorrect cases, they are displayed as:
+```
+------------------------------------------------------------
+| Wrong Output Number | Not Working Output | Expected Output |
+------------------------------------------------------------
 
-       clang++ file1.cpp -o working.out
-       clang++ file2.cpp -o notworking.out
--- FOR WINDOWS
+Test Case 1:
+----------------
+1
+5 1
+9 8 9 6 10
+10
+------------------------------------------------------------
+|         1          |        Yes         |       No        |
+------------------------------------------------------------
+```
 
-       clang++ file1.cpp -o working.exe
-       clang++ file2.cpp -o notworking.exe
+## Troubleshooting
+- **Error: `testCaseGenerator.py` not found!**  
+  Ensure the file exists in the directory.
 
- 
- 3. Run the following command to generate the test cases:
+- **Error: One of the executables failed to run properly!**  
+  Verify the compilation of `correct.cpp` and `wrong.cpp`.
 
-        python3 tester.py
+- **Progress bar stuck at 0%**  
+  Ensure `testCaseGenerator.py` is generating valid test cases.
 
-This command will compile file1.c and file2.c into working.out and notworking.out, respectively according to tc.py genrated testcase. It will then compare the outputs of both executables and add any differing outputs to tc1.csv.
+## License
+This project is open-source under the MIT License.
 
-View the generated test cases in tc1.csv.
-## Working
-The tcc.py code takes input from the tc.py code, which prints the test cases. The tcc.py executable file then compares the output printed by the working.out and notworking.out files using the os module and bash scripting.
+## Contributions
+Feel free to submit pull requests or open issues for improvements!
 
-Here is a more detailed explanation of each step:
-1. The tc.py code prints the test cases.
-2. The tester.py executable file runs the test cases and saves the output to the working.out and notworking.out files.
-3. The tester.py executable file uses the os module to get the current working directory.
-4. The tester.py executable file uses bash scripting to compare the output of the working.out and notworking.out files.
-5. The tester.py executable file prints a message indicating whether the test cases passed or failed.
-
-This process can be used to automate the testing of software. By running the test cases and comparing the output, the tcc.py executable file can identify any errors in the software. This can help to improve the quality of the software and ensure that it is working properly.
+---
+Happy Testing! 🚀
